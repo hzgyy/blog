@@ -9,20 +9,22 @@
       
       
       
+        <link rel="prev" href="..">
       
-        <link rel="next" href="CMake%E5%A4%87%E5%BF%98%E5%BD%95/">
+      
+        <link rel="next" href="../ROS%E5%AD%A6%E4%B9%A0/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.11">
     
     
       
-        <title>My Docs</title>
+        <title>CMake备忘录 - My Docs</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e359304.min.css">
       
       
 
@@ -41,7 +43,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -60,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#welcome-to-mkdocs" class="md-skip">
+        <a href="#chap0-intro" class="md-skip">
           Skip to content
         </a>
       
@@ -76,7 +78,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
+    <a href=".." title="My Docs" class="md-header__button md-logo" aria-label="My Docs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -96,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Welcome to MkDocs
+              CMake备忘录
             
           </span>
         </div>
@@ -171,7 +173,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
+    <a href=".." title="My Docs" class="md-nav__button md-logo" aria-label="My Docs" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -186,6 +188,26 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome to MkDocs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -195,25 +217,23 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
   <span class="md-ellipsis">
-    Welcome to MkDocs
+    CMake备忘录
   </span>
   
 
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="." class="md-nav__link md-nav__link--active">
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Welcome to MkDocs
+    CMake备忘录
   </span>
   
 
@@ -225,8 +245,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -235,18 +253,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#commands" class="md-nav__link">
+  <a href="#chap0-intro" class="md-nav__link">
     <span class="md-ellipsis">
-      Commands
+      Chap0 Intro
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#project-layout" class="md-nav__link">
+  <a href="#chap1" class="md-nav__link">
     <span class="md-ellipsis">
-      Project layout
+      Chap1 基础语法
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chap1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chap1 编译相关
     </span>
   </a>
   
@@ -267,27 +294,7 @@
   
   
     <li class="md-nav__item">
-      <a href="CMake%E5%A4%87%E5%BF%98%E5%BD%95/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    CMake备忘录
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="ROS%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+      <a href="../ROS%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -317,8 +324,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -327,18 +332,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#commands" class="md-nav__link">
+  <a href="#chap0-intro" class="md-nav__link">
     <span class="md-ellipsis">
-      Commands
+      Chap0 Intro
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#project-layout" class="md-nav__link">
+  <a href="#chap1" class="md-nav__link">
     <span class="md-ellipsis">
-      Project layout
+      Chap1 基础语法
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chap1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chap1 编译相关
     </span>
   </a>
   
@@ -359,21 +373,69 @@
                   
 
 
-<h1 id="welcome-to-mkdocs">Welcome to MkDocs</h1>
-<p>For full documentation visit <a href="https://www.mkdocs.org">mkdocs.org</a>.</p>
-<h2 id="commands">Commands</h2>
-<ul>
-<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
-<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code>mkdocs build</code> - Build the documentation site.</li>
-<li><code>mkdocs -h</code> - Print help message and exit.</li>
+  <h1>CMake备忘录</h1>
+
+<h3 id="chap0-intro">Chap0 Intro</h3>
+<p>简而言之，CMake是一个编译工具，在UNIX平台上可用于生成makefile。所以常见的工具链就是cmake+make</p>
+<h3 id="chap1">Chap1 基础语法</h3>
+<p>cmake本身有很多指令，用<code>CMD()</code> 表示指令
+cmake中指令大小写无关，但参数是大小写相关的。为了统一，一般都用大小字母表示。
+变量赋值采用SET命令，eg. <code>SET(VAR [VALUE] [CACHE TYPE DOCSTRING [FORCE]])</code>
+变量引用采用<code>${}</code>符号，但在if控制语句中直接使用变量名
+cmake清理工程只需用<code>make clean</code>把make出的文件清理就行。
+内部构建和外部构建：内部构建指在源代码所在目录去用cmake生成文件和make编译，外部构建是指在外部目录使用cmake及make编译。显然外部构建更有利于保持文件结构的整洁，故往往采用在<code>build</code>文件夹中使用cmake和make编译，把编译中间文件存于<code>build</code>中，方便管理</p>
+<h3 id="chap1_1">Chap1 编译相关</h3>
+<ol>
+<li>一个工程就由一个<code>PROJECT(name)</code>来定义，工程会包含几个全局变量：<ul>
+<li><code>PROJECT_BINARY_DIR</code>或<code>&lt;projectname&gt;_BINARY_DIR</code>用于表示编译发生的当前目录。</li>
 </ul>
-<h2 id="project-layout">Project layout</h2>
-<pre><code>mkdocs.yml    # The configuration file.
-docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
-</code></pre>
+</li>
+<li>工程下每一个目录中都需要写<code>CMakeLists.txt</code></li>
+<li>如何包含子目录中的源文件？
+    ADD_SUBDIRECTORY命令：
+    <code>ADD_SUBDIRECTORY(source_dir [binary_dir] [EXCLUDE_FROM_ALL])</code> 用于向工程中添加存放源文件的子目录    。可选参数bianry_dir表示中间二进制文件和目标二进制文件存放的位置。标识参数EXCLUDE_FROM_ALL表示是否把这个目录从编译过程中排除。</li>
+<li>输出结果位置
+    通过设置<code>EXECUTABLE_OUTPUT_PATH</code>来设置<strong>最终</strong>可执行文件所在位置。
+    通过设置<code>LIBRARY_OUTPUT_PATH</code>来指定<strong>最终</strong>共享库所在的位置。</li>
+<li>安装问题<ol>
+<li>用<code>make install</code>中<code>DESDIR</code>
+    makefile里面有变量<code>DESDIR</code>指定目标安装位置，默认装在<code>$(DESDIR)/usr/bin</code>目录下，所以使用命令<code>make install DESDIR=/path/to/install</code>可以指定安装位置</li>
+<li>cmake中的<code>CMAKE_INSTALL_PREFIX</code>变量
+    使用方法：<code>cmake -DCMAKE_INSTALL_PREFIX=/path/to/insatll</code></li>
+<li>cmake中的INSTALL命令
+    INSTALL命令用于在cmake内部定义安装的一些配置
+    安装目标文件：
+    <code>cmake
+    INSTALL(TARGETS targets...
+        [[ARCHIVE|LIBRARY|RUNTIME] 
+        [DESTINATION] &lt;dir&gt; 
+        [PERMISSIONS] permissions... [CONFIGURATIONS [Degug|Release|...]] 
+        [COMPONENT &lt;component&gt;]
+        [OPTIONAL]
+        ][...]
+    )</code>
+    TARGETS指定ADD_EXECUTABLE和ADD_LIBRARY的目标文件，可以是可执行二进制、动态库、静态库，应该从文件名可以区分
+    后面的三大配置具体指明各种文件安装细节
+    分类：ARCHIVE静态库，LIBRARY动态库，RUNTIME可执行二进制
+    DESTINATION指定该文件安装位置，注意当路径以/开头，说明是一个绝对路径，这个路径会覆盖<code>CMAKE_INSTALL_PREFIX</code>。而是一个相对路径时，最终的安装路径是<code>CMAKE_INSTALL_PREFIX/&lt;DESTINATION&gt;</code>
+    安装一般文件：
+    类似操作，把TARGETS关键字改为FILES，默认权限为644
+    <img alt="" src="../img/Pasted%20image%2020240301115123.png" />
+    非目标文件安装（例如脚本）:
+    关键字为PROGRAMS，默认权限755
+    <img alt="" src="../img/Pasted%20image%2020240301115214.png" />
+    目录的安装：
+    <img alt="" src="../img/Pasted%20image%2020240301115232.png" />
+    DIRECTORY参数指定需要安装的目录，注意dirs的结尾是abc和abc/有区别，abc表示把整个目录安装过去，也就是安装结果于<code>/path/to/install/abc</code>这个目录中。而abc/表示把这个目录中的内容安装到目标路径，而不包含目标本身，也就是说把abc目录中的内容全部安装到<code>/path/to/install</code>这个目录下。
+    而PATTERN怎是用正则表达式进行过滤，并把过滤后的文件执行EXCLUDE操作或者设置PERMISSIONS操作</li>
+<li>安装时执行cmake脚本
+<code>INSTALL([SCRIPT &lt;files&gt;] [CODE &lt;code&gt;])</code> 其中script指定cmake脚本，code指定cmake指令</li>
+</ol>
+</li>
+<li>构建动态库和静态库</li>
+<li></li>
+<li></li>
+</ol>
 
 
 
@@ -420,10 +482,10 @@ docs/
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
       
     
   </body>
