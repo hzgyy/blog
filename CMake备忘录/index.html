@@ -279,6 +279,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#chap2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chap2 安装问题
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chap3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chap3 构建动态库和静态库
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -358,6 +376,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#chap2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chap2 安装问题
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chap3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chap3 构建动态库和静态库
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -378,12 +414,12 @@
 <h3 id="chap0-intro">Chap0 Intro</h3>
 <p>简而言之，CMake是一个编译工具，在UNIX平台上可用于生成makefile。所以常见的工具链就是cmake+make</p>
 <h3 id="chap1">Chap1 基础语法</h3>
-<p>cmake本身有很多指令，用<code>CMD()</code> 表示指令
-cmake中指令大小写无关，但参数是大小写相关的。为了统一，一般都用大小字母表示。
-变量赋值采用SET命令，eg. <code>SET(VAR [VALUE] [CACHE TYPE DOCSTRING [FORCE]])</code>
-变量引用采用<code>${}</code>符号，但在if控制语句中直接使用变量名
-cmake清理工程只需用<code>make clean</code>把make出的文件清理就行。
-内部构建和外部构建：内部构建指在源代码所在目录去用cmake生成文件和make编译，外部构建是指在外部目录使用cmake及make编译。显然外部构建更有利于保持文件结构的整洁，故往往采用在<code>build</code>文件夹中使用cmake和make编译，把编译中间文件存于<code>build</code>中，方便管理</p>
+<p>cmake本身有很多指令，用<code>CMD()</code> 表示指令</p>
+<p>cmake中指令大小写无关，但参数是大小写相关的。为了统一，一般都用大小字母表示。</p>
+<p>变量赋值采用SET命令，eg. <code>SET(VAR [VALUE] [CACHE TYPE DOCSTRING [FORCE]])</code></p>
+<p>变量引用采用<code>${}</code>符号，但在if控制语句中直接使用变量名</p>
+<p>cmake清理工程只需用<code>make clean</code>把make出的文件清理就行。</p>
+<p>内部构建和外部构建：内部构建指在源代码所在目录去用cmake生成文件和make编译，外部构建是指在外部目录使用cmake及make编译。显然外部构建更有利于保持文件结构的整洁，故往往采用在<code>build</code>文件夹中使用cmake和make编译，把编译中间文件存于<code>build</code>中，方便管理</p>
 <h3 id="chap1_1">Chap1 编译相关</h3>
 <ol>
 <li>一个工程就由一个<code>PROJECT(name)</code>来定义，工程会包含几个全局变量：<ul>
@@ -391,50 +427,70 @@ cmake清理工程只需用<code>make clean</code>把make出的文件清理就行
 </ul>
 </li>
 <li>工程下每一个目录中都需要写<code>CMakeLists.txt</code></li>
-<li>如何包含子目录中的源文件？
-    ADD_SUBDIRECTORY命令：
-    <code>ADD_SUBDIRECTORY(source_dir [binary_dir] [EXCLUDE_FROM_ALL])</code> 用于向工程中添加存放源文件的子目录    。可选参数bianry_dir表示中间二进制文件和目标二进制文件存放的位置。标识参数EXCLUDE_FROM_ALL表示是否把这个目录从编译过程中排除。</li>
-<li>输出结果位置
-    通过设置<code>EXECUTABLE_OUTPUT_PATH</code>来设置<strong>最终</strong>可执行文件所在位置。
-    通过设置<code>LIBRARY_OUTPUT_PATH</code>来指定<strong>最终</strong>共享库所在的位置。</li>
-<li>安装问题<ol>
+<li>
+<p>如何包含子目录中的源文件？
+    ADD_SUBDIRECTORY命令：</p>
+<p><code>ADD_SUBDIRECTORY(source_dir [binary_dir] [EXCLUDE_FROM_ALL])</code> 用于向工程中添加存放源文件的子目录    。可选参数bianry_dir表示中间二进制文件和目标二进制文件存放的位置。标识参数EXCLUDE_FROM_ALL表示是否把这个目录从编译过程中排除。
+3. 输出结果位置
+通过设置<code>EXECUTABLE_OUTPUT_PATH</code>来设置<strong>最终</strong>可执行文件所在位置。</p>
+<p>通过设置<code>LIBRARY_OUTPUT_PATH</code>来指定<strong>最终</strong>共享库所在的位置。</p>
+<h3 id="chap2">Chap2 安装问题</h3>
+<ol>
 <li>用<code>make install</code>中<code>DESDIR</code>
-    makefile里面有变量<code>DESDIR</code>指定目标安装位置，默认装在<code>$(DESDIR)/usr/bin</code>目录下，所以使用命令<code>make install DESDIR=/path/to/install</code>可以指定安装位置</li>
+makefile里面有变量<code>DESDIR</code>指定目标安装位置，默认装在<code>$(DESDIR)/usr/bin</code>目录下，所以使用命令<code>make install DESDIR=/path/to/install</code>可以指定安装位置</li>
 <li>cmake中的<code>CMAKE_INSTALL_PREFIX</code>变量
-    使用方法：<code>cmake -DCMAKE_INSTALL_PREFIX=/path/to/insatll</code></li>
+使用方法：<code>cmake -DCMAKE_INSTALL_PREFIX=/path/to/insatll</code></li>
 <li>cmake中的INSTALL命令
-    INSTALL命令用于在cmake内部定义安装的一些配置
-    安装目标文件：
-    <code>cmake
-    INSTALL(TARGETS targets...
-        [[ARCHIVE|LIBRARY|RUNTIME] 
-        [DESTINATION] &lt;dir&gt; 
-        [PERMISSIONS] permissions... [CONFIGURATIONS [Degug|Release|...]] 
-        [COMPONENT &lt;component&gt;]
-        [OPTIONAL]
-        ][...]
-    )</code>
-    TARGETS指定ADD_EXECUTABLE和ADD_LIBRARY的目标文件，可以是可执行二进制、动态库、静态库，应该从文件名可以区分
-    后面的三大配置具体指明各种文件安装细节
-    分类：ARCHIVE静态库，LIBRARY动态库，RUNTIME可执行二进制
-    DESTINATION指定该文件安装位置，注意当路径以/开头，说明是一个绝对路径，这个路径会覆盖<code>CMAKE_INSTALL_PREFIX</code>。而是一个相对路径时，最终的安装路径是<code>CMAKE_INSTALL_PREFIX/&lt;DESTINATION&gt;</code>
-    安装一般文件：
-    类似操作，把TARGETS关键字改为FILES，默认权限为644
-    <img alt="" src="../img/Pasted%20image%2020240301115123.png" />
-    非目标文件安装（例如脚本）:
-    关键字为PROGRAMS，默认权限755
-    <img alt="" src="../img/Pasted%20image%2020240301115214.png" />
-    目录的安装：
-    <img alt="" src="../img/Pasted%20image%2020240301115232.png" />
-    DIRECTORY参数指定需要安装的目录，注意dirs的结尾是abc和abc/有区别，abc表示把整个目录安装过去，也就是安装结果于<code>/path/to/install/abc</code>这个目录中。而abc/表示把这个目录中的内容安装到目标路径，而不包含目标本身，也就是说把abc目录中的内容全部安装到<code>/path/to/install</code>这个目录下。
-    而PATTERN怎是用正则表达式进行过滤，并把过滤后的文件执行EXCLUDE操作或者设置PERMISSIONS操作</li>
-<li>安装时执行cmake脚本
-<code>INSTALL([SCRIPT &lt;files&gt;] [CODE &lt;code&gt;])</code> 其中script指定cmake脚本，code指定cmake指令</li>
+INSTALL命令用于在cmake内部定义安装的一些配置
+安装目标文件：
+<code>cmake
+INSTALL(TARGETS targets...
+    [[ARCHIVE|LIBRARY|RUNTIME] 
+    [DESTINATION] &lt;dir&gt; 
+    [PERMISSIONS] permissions... [CONFIGURATIONS [Degug|Release|...]] 
+    [COMPONENT &lt;component&gt;]
+    [OPTIONAL]
+    ][...]
+)</code>
+TARGETS指定ADD_EXECUTABLE和ADD_LIBRARY的目标文件，可以是可执行二进制、动态库、静态库，应该从文件名可以区分</li>
 </ol>
+<p>后面的三大配置具体指明各种文件安装细节</p>
+<p>分类：ARCHIVE静态库，LIBRARY动态库，RUNTIME可执行二进制</p>
+<p>DESTINATION指定该文件安装位置，注意当路径以/开头，说明是一个绝对路径，这个路径会覆盖<code>CMAKE_INSTALL_PREFIX</code>。而是一个相对路径时，最终的安装路径是<code>CMAKE_INSTALL_PREFIX/&lt;DESTINATION&gt;</code></p>
+<p>安装一般文件：</p>
+<p>类似操作，把TARGETS关键字改为FILES，默认权限为644
+<img alt="" src="../img/Pasted%20image%2020240301115123.png" />
+非目标文件安装（例如脚本）:</p>
+<p>关键字为PROGRAMS，默认权限755
+<img alt="" src="../img/Pasted%20image%2020240301115214.png" />
+目录的安装：
+<img alt="" src="../img/Pasted%20image%2020240301115232.png" />
+DIRECTORY参数指定需要安装的目录，注意dirs的结尾是abc和abc/有区别，abc表示把整个目录安装过去，也就是安装结果于<code>/path/to/install/abc</code>这个目录中。而abc/表示把这个目录中的内容安装到目标路径，而不包含目标本身，也就是说把abc目录中的内容全部安装到<code>/path/to/install</code>这个目录下。</p>
+<p>而PATTERN则是用正则表达式进行过滤，并把过滤后的文件执行EXCLUDE操作或者设置PERMISSIONS操作
+4. 安装时执行cmake脚本
+<code>INSTALL([SCRIPT &lt;files&gt;] [CODE &lt;code&gt;])</code> 其中script指定cmake脚本，code指定cmake指令</p>
+<h3 id="chap3">Chap3 构建动态库和静态库</h3>
+<ol>
+<li>ADD_LIBRARY命令
+<code>ADD_LIBRARY(libname [SHARED|STATIC|MODULE] [EXCLUDE_FROM_ALL] source1 source2 ...)</code></li>
+</ol>
+<p>libname不需要写lib***，只要纯名</p>
+<p>类型：SHARED动态库 STATIC静态库 MODULE好像不太用
+2. 构建同名动态库和静态库</p>
+<p>由于cmake中TARGET不能混用，所以对TARGET abc用了一次ADD_LIBRARY构建动态库后不能再通过ADD_LIBRARY构建静态库了。所以我们构建静态库时要换一个target名字，然后通过设置属性的方式把输出静态库的名字改为原先的名字。</p>
+<p>设置属性：<code>SET_TARGET_PROPERTIES</code>
+用法：<code>SET_TARGET_PROPERTIES(target PROPERTIES property_name value ...)</code></p>
+<p>例子：<code>SET_TARGET_PROPERTIES(hello PROPERTIES VERSION 1.2 SOVERSION 1)</code>其中SOVERSION是api的版本
+3. 调用动态库和静态库
+Linux中一般系统默认的头文件的存放路径是：<code>/usr/include /usr/local/include /usr/lib/include</code> </p>
+<p>一般的动态库的位置是：<code>/lib /usr/lib</code></p>
+<p>cmake如何指定其他位置的头文件？</p>
+<p>用<code>INCLUDE_DIRECTORIES(&lt;dir&gt;)</code> 来把其他目录加入头文件搜索范围。</p>
+<p>cmake如何指定其他位置的库？</p>
+<p>用<code>TARGET_LINK_DIRECTORIES(target PUBLIC|PRIVATE|INTERFACE derectory1 ...)</code>可以实现加入其他目录
+用<code>TARGET_LINK_LIBRARIES(target library_name)</code> 可以实现加入指定的动态链接库。
+1. </p>
 </li>
-<li>构建动态库和静态库</li>
-<li></li>
-<li></li>
 </ol>
 
 

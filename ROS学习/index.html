@@ -279,6 +279,51 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#chap1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chap1 Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chap2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chap2 命令备忘录
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ws" class="md-nav__link">
+    <span class="md-ellipsis">
+      工作空间ws
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      话题通信的编程实现
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      服务通信的编程实现
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -320,6 +365,51 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#chap1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chap1 Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chap2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chap2 命令备忘录
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ws" class="md-nav__link">
+    <span class="md-ellipsis">
+      工作空间ws
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      话题通信的编程实现
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      服务通信的编程实现
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -338,6 +428,116 @@
   <h1>ROS学习</h1>
 
 <h3 id="chap0-cmake">Chap0 CMake基础</h3>
+<p><a href="../CMake%E5%A4%87%E5%BF%98%E5%BD%95/">CMake备忘录</a></p>
+<h3 id="chap1-introduction">Chap1 Introduction</h3>
+<p>ROS = 通信机制 + 开发工具 + 应用功能 + 生态系统
+核心概念：
+1. 节点 Node
+    节点是具体执行程序的单元，可以认为是进程/独立运行的可执行文件。</p>
+<pre><code>不同节点的编程语言可以不同
+
+节点的名字必须唯一
+
+ROS Master 是管理节点的控制中心。
+1. 为节点提供注册和命名服务。
+2. 跟踪话题记录/服务通信，辅助节点之间相互查找链接。
+3. 提供参数服务器，作为全局参数的字典。
+</code></pre>
+<ol>
+<li>
+<p>话题 Topic
+    话题仅是不同节点间信息传输的通道，之间通信由发布和订阅实现。</p>
+<p>需要注意这种通信是单向的（由发布者到订阅者，不知道订阅者是否收到），订阅者可以不唯一，并且是异步的。</p>
+<p>具体的传输形式是以消息(message)传输，即一种具有特殊的数据结构的数据包。这种数据结构定义是与编程语言无关的，由.msg文件定义，编译过程中可以生成相应的语言的代码。
+3. 服务 Service
+是一种同步的，双向的，有反馈的通信方法。</p>
+<p>采用Server/Client模型，由客户端发布请求，服务器完成应答后返回数据</p>
+<p>数据类型由.srv文件定义
+4. 参数 Parameters
+节点可以向ROS Master设置变量，适合用来存储静态，非二进制，不怎么改变的数据。
+5. 文件体系
+最底层是功能包Package 其中包含源码，配置文件和数据定义
+再往上是元功能包和</p>
+<h3 id="chap2">Chap2 命令备忘录</h3>
+<ol>
+<li><code>roscore</code> 开启ROS Master</li>
+<li><code>rosrun package node</code> 运行某个节点</li>
+<li><code>rqt_graph</code> 显示现在节点的计算图</li>
+<li><code>rosnode</code>显示系统中节点相关
+<code>rosnode list</code> 列出所有生效的节点
+<code>rosnode info node_name</code>查看某个具体节点的信息</li>
+<li><code>rostopic</code> 查看话题相关 <code>rostopic list</code> 列出所有话题信息</li>
+<li><code>rosmsg</code>查看消息相关 <code>rosmsg show msg_type</code> 查看具体的消息信息</li>
+<li><code>rosservice</code> 查看服务相关</li>
+<li><code>rosbag</code> 记录系统中所有话题的数据</li>
+</ol>
+<h3 id="ws">工作空间ws</h3>
+<ol>
+<li>组成
+src源码空间+build编译空间+devel开发空间+install安装空间</li>
+<li>devel主要存放编译生成的可执行文件、脚本...</li>
+<li>创建工作空间
+在需要的目录下<code>catkin_make init</code>转化为工作空间
+编译在工作空间下<code>catkin_make</code>
+创建功能包<code>catkin_make pkg &lt;pkg_name&gt; [depend]</code></li>
+</ol>
+<h3 id="_1">话题通信的编程实现</h3>
+<ol>
+<li>实现发布话题的流程：</li>
+<li>初始化ROS节点<code>init(argc,argv,"node_name")</code></li>
+<li>注册节点句柄<code>ROS::NodeHandle</code></li>
+<li>
+<p>向ROS Master注册话题发布节点，内容包括话题名和消息类型
+    <code>inline ros::Publisher ros::NodeHandle::advertise&amp;lt;geometry_msgs::Twist&amp;gt;(const std::string &amp;amp;topic, uint32_t queue_size, bool latch = false)</code></p>
+<p>参数：topic即话题名，queue_size即队列长度，因为话题通信是异步的；latch(optional)是标识是否存下最后一个发布的message，以便有新的订阅者接入时直接发送。
+    3. 创建消息数据
+    4. 按一定频率循环发布消息<code>publisher.publish()</code></p>
+</li>
+</ol>
+<p>Publisher类：用于发布话题，这里NodeHandle的advertise方法用于向ROS Master告知我要向这个topic发布消息了，并且设定了队列长度，之后再调用<code>.publish()</code>方法就可以实现发布消息。</p>
+<p>注意调用NodeHandle的advertise方法时，明显没有显式调用之前init的节点，是因为advertise时，NodeHandle仅向ROS Master告知现在系统内某个节点会向这个指定的topic发布消息，但是他也不知道是哪个节点会发布，也不需要知道。之后有节点想要知道消息，也就只要订阅那个topic，那些节点也不知道是哪个节点在发布消息，只知道这个话题里面会有消息出来。所以消息就是一个通道，两侧的节点都是<strong>双盲</strong>的。  <br />
+2. 订阅话题的流程
+1. 定义一个回调函数，用于处理收到的消息
+2. 初始化节点句柄
+3. 订阅消息
+<code>inline ros::Subscriber ros::NodeHandle::subscribe&lt;msg_type&gt;;(const std::string &amp;amp;topic, uint32_t queue_size, void (*fp)(msg::ConstPtr &amp;amp;), const ros::TransportHints &amp;amp;transport_hints = ros::TransportHints())</code></p>
+<p>参数：topic是想要订阅的话题
+fp是回调函数，TransportHints()是什么函数？</p>
+<ol>
+<li>循环等待话题消息，接收后进入回调函数，在回调函数中进行消息处理。</li>
+<li>自定义消息类型</li>
+<li>在.msg文件中定义，例如name.msg</li>
+<li>在调用时包含头文件,例如name.h</li>
+<li>之后就按正常的订阅和发布处理，不过消息的命名空间和类型都按自定义的来。</li>
+</ol>
+</li>
+</ol>
+<h3 id="_2">服务通信的编程实现</h3>
+<ol>
+<li>实现client端<ol>
+<li><code>ros::service::waitForService</code>方法，等待某个服务有无进行</li>
+<li><code>ros::ServiceClient</code>是一个服务客户端的类，由NodeHandle的<code>serviceClient</code>方法可以获得这个类的实例，<code>serviceClient&lt;msg_type&gt;(string &amp;service_name, bool persistent = false, ros::M_string &amp;header_values = ros::M_string())</code>
+    参数：服务名，persistent先不管</li>
+<li>初始化消息<code>srv</code>,注意消息是包含request和response的</li>
+<li>用serviceClient的call方法可以发送request。</li>
+<li>获得的response返回到<code>srv.response</code>中，调用这个就可以看到返回的结果。</li>
+</ol>
+</li>
+<li>实现server端<ol>
+<li>定义一个回调函数，处理server收到的request</li>
+<li>初始化节点</li>
+<li><code>ros::ServiceServer</code>是一个服务服务器端的类，由NodeHandle的advertiseService方法可以向ROS Master注册这个服务，<code>ros::NodeHandle::advertiseService&lt;...&gt;(const std::string &amp;service, bool (*srv_func) (srv::Request &amp;, srv::Response &amp;))</code>
+    参数：服务名，回调函数srv_func，注意格式</li>
+<li>用<code>spin()</code>或者<code>spinonce()</code>可以从回调函数队列中获得带实际参数的回调函数，之后在回调函数内处理</li>
+</ol>
+</li>
+<li>实现自定义服务消息<ol>
+<li>在<code>.srv</code>文件中定义服务的消息类型，</li>
+<li>加入编译所需的依赖和包，进行编译，得到头文件</li>
+<li>在client和server的文件中调用头文件，即可使用</li>
+</ol>
+</li>
+</ol>
 
 
 
